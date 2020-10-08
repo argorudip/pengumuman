@@ -20,9 +20,10 @@ public class SessionManager {
 
     private static final String IS_LOGIN = "IsLoggedIn";
 
-    public static final String KEY_ID = "name";
+    public static final String KEY_ID_ANGGOTA = "name";
 
-    public static final String KEY_JABATAN = "0";
+    public static final String KEY_ABSEN_ANGGOTA = "0";
+
 
     // Constructor
     @SuppressLint("CommitPrefEdits")
@@ -36,13 +37,13 @@ public class SessionManager {
     /**
      * Create login session
      * */
-    public void createLoginSession(String name, String email){
+    public void createLoginSession(String id_anggota, String absen){
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
 
-        editor.putString(KEY_ID, name);
+        editor.putString(KEY_ID_ANGGOTA, id_anggota);
 
-        editor.putString(KEY_JABATAN, email);
+        editor.putString(KEY_ABSEN_ANGGOTA, absen);
 
         editor.commit();
     }
@@ -62,8 +63,8 @@ public class SessionManager {
      * */
     public HashMap<String, String> getUserDetails(){
         HashMap<String, String> user = new HashMap<>();
-        user.put(KEY_ID, pref.getString(KEY_ID, null));
-        user.put(KEY_JABATAN, pref.getString(KEY_JABATAN, null));
+        user.put(KEY_ID_ANGGOTA, pref.getString(KEY_ID_ANGGOTA, null));
+        user.put(KEY_ABSEN_ANGGOTA, pref.getString(KEY_ABSEN_ANGGOTA, null));
         return user;
     }
 

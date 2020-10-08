@@ -168,8 +168,8 @@ public class Login extends AppCompatActivity {
                                 JSONObject responses = response.getJSONObject(i);
                                 Log.d("data1", responses.optString("id_anggota"));
                                 Log.d("data1", responses.optString("kode_anggota"));
-                                Log.d("data1", responses.optString("nama_anggota"));
-                                Log.d("data1", responses.optString("jenis_kelamin"));
+
+                                loginProcess(responses.optString("id_anggota"), responses.optString("kode_anggota"));
                             }
 
                         } catch (JSONException e) {
@@ -232,12 +232,12 @@ public class Login extends AppCompatActivity {
 
     }
 
-    private void loginProcess(final String telp_login, final String pass_login) {
+    private void loginProcess(final String id_anggota, final String absen) {
         // Tag used to cancel the request
         pDialog.setMessage("Memuat tampilan");
         showDialog();
 
-        session.createLoginSession(telp_login, pass_login);
+        session.createLoginSession(id_anggota, absen);
         Intent intent = new Intent(Login.this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
